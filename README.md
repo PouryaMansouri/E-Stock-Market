@@ -13,9 +13,12 @@ E-StockMarket Application is a Restful Microservice application, where it allows
 
 **Backend:** `Python` `Flask`
 
-**Cloud and Tools:** `AWS` `CloudFormation` `IAM`
+**Cloud Services:** `AWS` `CloudFormation` `IAM` `EC2`
 
 **Database:** `AWS DynamoDB`
+
+**Others:** `Docker` `Nginx` `Docker-Compose`
+
 
 
 ### To Do
