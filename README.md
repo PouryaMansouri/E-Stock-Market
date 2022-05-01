@@ -4,6 +4,9 @@
 E-StockMarket Application is a Restful Microservice application, where it allows users to manage the stocks like create, view stock price details and company details
 
 
+### Architecture Diagram
+![img.png](architecture.png)
+
 ### Tech Stack
 
 **FrontEnd:** `React`
@@ -26,7 +29,7 @@ E-StockMarket Application is a Restful Microservice application, where it allows
 - [x]  Deploy and Run the application on AWS EC2 
 - [ ]  Try to optimize few of the operations like scan()
 - [ ]  Store the Logs in the Logstash
-- [ ]  Run Application using Nginx Gateway
+- [x]  Run Application using Nginx
 - [ ]  Write the Tests Cases using Pytest
 
 ### API Reference
@@ -140,15 +143,23 @@ Browse the Swagger UI and explore any Endpoints
 
 ## AWS Cloud Deployment
 
-To deploy this project on AWS EC2
+Follow the below steps - to deploy/run this project on AWS EC2
 
 ```bash
-  Create an EC2 Instance
-  Logon to EC2
-  git clone the repository
+  Create a Security group with inbound ports: 'Custom TCP Port: 80 and SSH : 22'
+  Create a KEY-PAIR and download it locally
+  Create an EC2 Instance with ami ubuntu and attach above Security group and Key-Pair
+  Logon to EC2 from local 'ssh -i key.pem ubuntu@<public-ip>'
   sudo apt-get update -y
   sudo apt-get install docker-compose
+  git clone https://github.com/Sumanshu-Nankana/E-Stock-Market.git
+  cd E-Stock_Market
+  nano docker-compose.yml
+  'update the SERVER_NAME=0.0.0.0  with SERVER_NAME=<EC2-Public-IP>'
+  update the AWS KEYS in 'backend/settings.py'
+  create the Cloudformation Stack with template from 'infrastructure/stack.yml'
   sudo docker-compose up
+  And Access the Swagger UI 'http://<EC2-Public-Ip>/apidocs'
 ```
 
 
