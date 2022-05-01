@@ -1,0 +1,33 @@
+Resources:
+  CompanyTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        -
+          AttributeName: "C_CODE"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "C_CODE"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
+      TableName: "CompanyTable"
+  StockTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      AttributeDefinitions:
+        - AttributeName: "C_CODE"
+          AttributeType: "S"
+        - AttributeName: "S_TIMESTAMP"
+          AttributeType: "N"
+      KeySchema:
+        - AttributeName: "C_CODE"
+          KeyType: "HASH"
+        - AttributeName: "S_TIMESTAMP"
+          KeyType: "RANGE"
+      ProvisionedThroughput:
+        ReadCapacityUnits: "5"
+        WriteCapacityUnits: "5"
+      TableName: "StockTable"
