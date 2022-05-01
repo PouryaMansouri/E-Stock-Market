@@ -10,5 +10,4 @@ services:
     container_name: nginx
     environment:
       - SERVER_NAME=0.0.0.0   # update this with EC2 public IP address
-    restart: always
     network_mode: host
