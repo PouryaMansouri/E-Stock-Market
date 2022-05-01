@@ -109,14 +109,15 @@ E-StockMarket Application is a Restful Microservice application, where it allows
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone git@github.com:Sumanshu-Nankana/E-Stock-Market.git
 ```
 
 Go to the project directory and Setup few things
 
 ```bash
   cd E-Stock-Market
-  update AWS_SECRET_KEY_ID` & `AWS_SECRET_ACCESS_KEY` in backend/settings.py
+  cd backend
+  update AWS_SECRET_KEY_ID` & `AWS_SECRET_ACCESS_KEY` in settings.py
   with that IAM user - who has AWS Administrator access. (Or atleast Cloudformation, DynamoDB and S3)
 ```
 
@@ -128,7 +129,6 @@ Go to the project directory and Setup few things
 Start the application using Docker
 
 ```bash
-  cd backend
   docker build -t e-stock-market .
   docker run -d -p 5000:5000 e-stock-market
 ```
