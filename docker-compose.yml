@@ -1,0 +1,7 @@
+version: '3.7'
+
+services:
+  estockmarket:
+    build: ./backend/Dockerfile
+    container_name: estockmarket_container
+    network_mode: host

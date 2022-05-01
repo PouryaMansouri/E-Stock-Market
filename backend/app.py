@@ -18,6 +18,3 @@ application.config.from_object("config.ProductionConfig")
 
 application.register_blueprint(company_bp)
 application.register_blueprint(stock_bp)
-
-if __name__ == "__main__":
-    application.run(host='0.0.0.0')

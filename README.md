@@ -23,10 +23,10 @@ E-StockMarket Application is a Restful Microservice application, where it allows
 - [x]  Dockerize the application
 - [x]  Run the Dockerize application and the Test it
 - [x]  Create the AWS DynamoDB using Cloudformation
-- [ ]  Deploy the application on AWS Cloud 
+- [x]  Deploy and Run the application on AWS EC2 
 - [ ]  Try to optimize few of the operations like scan()
 - [ ]  Store the Logs in the Logstash
-- [ ]  Run Application using Nginx & uWSGI Server
+- [ ]  Run Application using Nginx Gateway
 - [ ]  Write the Tests Cases using Pytest
 
 ### API Reference
@@ -104,7 +104,7 @@ E-StockMarket Application is a Restful Microservice application, where it allows
 | `companycode` | `string - in Path` | **Required**. Company Code                        |
 
 
-## Run Locally
+## Run Locally on Linux OS
 
 Clone the project
 
@@ -116,8 +116,7 @@ Go to the project directory and Setup few things
 
 ```bash
   cd E-Stock-Market
-  cd backend
-  update AWS_SECRET_KEY_ID` & `AWS_SECRET_ACCESS_KEY` in settings.py
+  update AWS_SECRET_KEY_ID` & `AWS_SECRET_ACCESS_KEY` in backend/settings.py
   with that IAM user - who has AWS Administrator access. (Or atleast Cloudformation, DynamoDB and S3)
 ```
 
@@ -126,11 +125,10 @@ Go to the project directory and Setup few things
 - Go to CloudFormation
 - Create the Stack - using template : infrastructure/stack.yaml
 ```
-Start the application using Docker
+Start the application using Docker-Compose
 
 ```bash
-  docker build -t e-stock-market .
-  docker run -d -p 5000:5000 e-stock-market
+    docker-compose up
 ```
 
 Browse the Swagger UI and explore any Endpoints
@@ -139,3 +137,11 @@ Browse the Swagger UI and explore any Endpoints
   http://localhost:5000/apidocs/index.html
 ```
 
+
+## Additional Notes
+
+I am using "gunicorn" wsgi server, which not runs on windows. 
+So to run on windows, you need to update the Dockerfile with
+```
+CMD ["python", "wsgi.py"]
+```
