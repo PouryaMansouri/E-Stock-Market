@@ -138,6 +138,21 @@ Browse the Swagger UI and explore any Endpoints
 ```
 
 
+## AWS Cloud Deployment
+
+To deploy this project on AWS EC2
+
+```bash
+  Create an EC2 Instance
+  Logon to EC2
+  git clone the repository
+  sudo apt-get update -y
+  sudo apt-get install docker-compose
+  sudo docker-compose up
+```
+
+
+
 ## Additional Notes
 
 I am using "gunicorn" wsgi server, which not runs on windows. 
