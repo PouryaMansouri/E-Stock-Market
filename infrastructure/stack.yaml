@@ -50,6 +50,7 @@ Resources:
     Properties:
       AvailabilityZone: eu-west-2a
       ImageId: ami-0758d98b134137d18
+      KeyName: estockmarket-kp
       InstanceType: t2.micro
       SecurityGroups:
         - !Ref SecurityGroup

@@ -149,19 +149,21 @@ Follow the below steps - to deploy/run this project on AWS EC2
 
 ```bash
   1) Login to AWS account
-  2) Go to Cloudformation and Create the stack using template 'infrastructure/stack.yml'
+  2) Create a KEY-PAIR and download it locally
+  3) Update the 'infrastructure/stack.yml' with 'KeyName: <your-key-pair>' in line number: 53
+  4) Go to Cloudformation and Create the stack using template 'infrastructure/stack.yml'
      This will Create the EC2, Security Group, Dynamo DB Tables
-  3) Logon to EC2 from Command Prompt as 'ssh -i ubuntu@<ec2-public-ip>'
-  4) Run 'sudo apt-get update -y'
-  5) Run 'sudo apt-get install docker-compose'
-  6) Run 'git clone https://github.com/Sumanshu-Nankana/E-Stock-Market.git'
-  7) Run 'cd E-Stock-Market'
-  8) Run 'nano docker-compose.yml'
+  5) Logon to EC2 from Command Prompt as 'ssh -i <key-pair> ubuntu@<ec2-public-ip>'
+  6) Run 'sudo apt-get update -y'
+  7) Run 'sudo apt-get install docker-compose'
+  8) Run 'git clone https://github.com/Sumanshu-Nankana/E-Stock-Market.git'
+  9) Run 'cd E-Stock-Market'
+  10) Run 'nano docker-compose.yml'
      and update the 'SERVER_NAME=0.0.0.0'  with 'SERVER_NAME=<EC2-Public-IP>'
-  9) Run 'nano backend/settings.py'
+  11) Run 'nano backend/settings.py'
       and update the 'AWS KEY_ID' and 'ACCESS_KEY'
-  10) Run 'sudo docker-compose up'
-  11) Access the Swagger UI from browser as 'http://<EC2-Public-Ip>/apidocs'
+  12) Run 'sudo docker-compose up'
+  13) Access the Swagger UI from browser as 'http://<EC2-Public-Ip>/apidocs'
 ```
 
 
