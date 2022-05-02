@@ -7,6 +7,9 @@ E-StockMarket Application is a Restful Microservice application, where it allows
 ### Architecture Diagram
 ![img.png](architecture.png)
 
+### Cloudformation Template Design
+![img.png](cloudformation_design.png)
+
 ### Tech Stack
 
 **FrontEnd:** `React`
