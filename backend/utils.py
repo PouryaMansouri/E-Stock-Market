@@ -163,6 +163,5 @@ def get_company_stock_price_list_of_timeframe(companycode, startdate, enddate):
                 return {"message": "Stock Price does not exists for this company between provided timestamp"}
         except Exception as e:
             logging.error(e)
-
     else:
         return {"message": "Company details does  not exists"}

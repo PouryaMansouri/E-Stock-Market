@@ -30,7 +30,7 @@ E-StockMarket Application is a Restful Microservice application, where it allows
 - [x]  Create the AWS DynamoDB using Cloudformation
 - [x]  Deploy and Run the application on AWS EC2 
 - [ ]  Try to optimize few of the operations like scan()
-- [ ]  Store the Logs in the Logstash
+- [ ]  Store and Process the Logs via the ELK.
 - [x]  Run Application using Nginx
 - [ ]  Write the Tests Cases using Pytest
 
