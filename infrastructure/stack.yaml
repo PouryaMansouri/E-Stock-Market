@@ -45,6 +45,39 @@ Resources:
           ToPort: 80
           FromPort: 80
           IpProtocol: tcp
+  EC2IAMRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - ec2.amazonaws.com
+            Action:
+              - 'sts:AssumeRole'
+      Policies:
+        - PolicyName: DynamoDBInlinePolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - 'dynamodb:Query'
+                  - 'dynamodb:Scan'
+                  - 'dynamodb:PutItem'
+                  - 'dynamodb:Delete*'
+                  - 'dynamodb:Update*'
+                  - 'dynamodb:Get*'
+                Resource: '*'
+      RoleName: EC2DynamoDBRole
+  IAMInstanceProfile:
+    Type: AWS::IAM::InstanceProfile
+    Properties:
+      InstanceProfileName: ec2-instance-profile
+      Roles:
+        - !Ref EC2IAMRole
   EC2Instance:
     Type: AWS::EC2::Instance
     Properties:
@@ -60,3 +93,4 @@ Resources:
           #!/bin/bash
           sudo apt-get update -y
           sudo apt-get install docker-compose -y
+      IamInstanceProfile: !Ref IAMInstanceProfile

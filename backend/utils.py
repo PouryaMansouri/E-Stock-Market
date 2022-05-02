@@ -1,12 +1,8 @@
 import boto3
 import logging
-import settings
 from boto3.dynamodb.conditions import Attr, Key
 
-dynamodb = boto3.resource('dynamodb',
-                          region_name=settings.AWS_REGION,
-                          aws_access_key_id=settings.AWS_SECRET_KEY_ID,
-                          aws_secret_access_key=settings.AWS_SECRET_ACCESS_KEY)
+dynamodb = boto3.resource('dynamodb', region_name="eu-west-2")
 company_table = dynamodb.Table('CompanyTable')
 stock_table = dynamodb.Table('StockTable')
 
