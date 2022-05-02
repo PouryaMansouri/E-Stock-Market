@@ -31,3 +31,25 @@ Resources:
         ReadCapacityUnits: "5"
         WriteCapacityUnits: "5"
       TableName: "StockTable"
+  SecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: 'Security Group of E Stock Market Application'
+      GroupName: 'E Stock Market Security Group'
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          ToPort: 22
+          FromPort: 22
+          IpProtocol: tcp
+        - CidrIp: 0.0.0.0/0
+          ToPort: 80
+          FromPort: 80
+          IpProtocol: tcp
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      AvailabilityZone: eu-west-2a
+      ImageId: ami-0758d98b134137d18
+      InstanceType: t2.micro
+      SecurityGroups:
+        - !Ref SecurityGroup

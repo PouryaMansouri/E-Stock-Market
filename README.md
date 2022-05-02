@@ -20,7 +20,6 @@ E-StockMarket Application is a Restful Microservice application, where it allows
 **Others:** `Docker` `Nginx` `Docker-Compose`
 
 
-
 ### To Do
 
 - [x]  Create the Backend Endpoints
@@ -149,20 +148,20 @@ Browse the Swagger UI and explore any Endpoints
 Follow the below steps - to deploy/run this project on AWS EC2
 
 ```bash
-  Create a Security group with inbound ports: 'Custom TCP Port: 80 and SSH : 22'
-  Create a KEY-PAIR and download it locally
-  Create an EC2 Instance with ami ubuntu and attach above Security group and Key-Pair
-  Logon to EC2 from local 'ssh -i key.pem ubuntu@<public-ip>'
-  sudo apt-get update -y
-  sudo apt-get install docker-compose
-  git clone https://github.com/Sumanshu-Nankana/E-Stock-Market.git
-  cd E-Stock_Market
-  nano docker-compose.yml
-  'update the SERVER_NAME=0.0.0.0  with SERVER_NAME=<EC2-Public-IP>'
-  update the AWS KEYS in 'backend/settings.py'
-  create the Cloudformation Stack with template from 'infrastructure/stack.yml'
-  sudo docker-compose up
-  And Access the Swagger UI 'http://<EC2-Public-Ip>/apidocs'
+  1) Login to AWS account
+  2) Go to Cloudformation and Create the stack using template 'infrastructure/stack.yml'
+     This will Create the EC2, Security Group, Dynamo DB Tables
+  3) Logon to EC2 from Command Prompt as 'ssh -i ubuntu@<ec2-public-ip>'
+  4) Run 'sudo apt-get update -y'
+  5) Run 'sudo apt-get install docker-compose'
+  6) Run 'git clone https://github.com/Sumanshu-Nankana/E-Stock-Market.git'
+  7) Run 'cd E-Stock-Market'
+  8) Run 'nano docker-compose.yml'
+     and update the 'SERVER_NAME=0.0.0.0'  with 'SERVER_NAME=<EC2-Public-IP>'
+  9) Run 'nano backend/settings.py'
+      and update the 'AWS KEY_ID' and 'ACCESS_KEY'
+  10) Run 'sudo docker-compose up'
+  11) Access the Swagger UI from browser as 'http://<EC2-Public-Ip>/apidocs'
 ```
 
 
@@ -170,7 +169,7 @@ Follow the below steps - to deploy/run this project on AWS EC2
 ## Additional Notes
 
 I am using "gunicorn" wsgi server, which not runs on windows. 
-So to run on windows, you need to update the Dockerfile with
+So to run on windows, you need to update the Dockerfile with and remove 'gunicorn' from requirements.txt
 ```
 CMD ["python", "wsgi.py"]
 ```
