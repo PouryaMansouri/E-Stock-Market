@@ -130,12 +130,12 @@ Go to the project directory and Setup few things
 - Open AWS
 - Go to CloudFormation
 - Create the Stack - using template : infrastructure/stack.yaml
-  (Comment Everything from Stack and Leave DynamoDB Uncommented)
 ```
-Start the application using Docker-Compose
+Normally start the application
 
 ```bash
-    docker-compose up
+    cd backend
+    python wsgi.py
 ```
 
 Browse the Swagger UI and explore any Endpoints
