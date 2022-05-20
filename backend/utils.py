@@ -109,12 +109,18 @@ def get_all_company_data():
             output = {}
             for i in response['Items']:
                 output[i["C_CODE"]] = i["S_PRICE"]
-            return output
+            final_output = []
+            idx = 0
+            for key, val in output.items():
+                final_output.append({"idx": idx, "C_Code": key, "Stock_price": val})
+                idx += 1
+            return {"details": final_output}
         else:
             return {"message": "Stock Prices does not Exists for any Company"}
     except Exception as e:
         logging.error(e)
         logging.error("Error while getting all companies data")
+
 
 def get_company_latest_stock_price(companycode):
     try:
