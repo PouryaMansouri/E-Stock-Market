@@ -2,8 +2,10 @@ from flask import Flask
 from flasgger import Swagger
 from company.routes import company_bp
 from stocks.routes import stock_bp
+from flask_cors import CORS
 
 application = Flask(__name__)
+CORS(application)
 
 application.config['SWAGGER'] = {
     'title': 'E-Stock-Market API Documentation',

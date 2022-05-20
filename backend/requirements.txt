@@ -26,3 +26,4 @@ Werkzeug==2.1.1
 wincertstore==0.2
 zipp==3.8.0
 gunicorn
+Flask-Cors==3.0.10

@@ -140,6 +140,7 @@ def get_company_stock_price_list_of_timeframe(companycode, startdate, enddate):
             if response['Count'] > 0:
                 items = response['Items']
                 response = {"max_price": max_price, "min_price": min_price, "average_price": average_price}
+                prices = []
                 for idx, i in enumerate(items):
                     date = int(str(i["S_TIMESTAMP"])[:8])
                     time = int(str(i["S_TIMESTAMP"])[8:14])
@@ -149,11 +150,12 @@ def get_company_stock_price_list_of_timeframe(companycode, startdate, enddate):
                     if min_price > stock_price:
                         min_price = stock_price
                     total = total + stock_price
-                    response[str(idx)] = {"date": date, "time": time, "stock_price": i["S_PRICE"]}
+                    prices.append({"idx": idx, "date": date, "time": time, "stock_price": i["S_PRICE"]})
                 average_price = total / len(items)
                 response["max_price"] = max_price
                 response["min_price"] = min_price
                 response["average_price"] = average_price
+                response["prices"] = prices
                 return response
             else:
                 return {"message": "Stock Price does not exists for this company between provided timestamp"}
