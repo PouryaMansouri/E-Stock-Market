@@ -141,10 +141,10 @@ Normally start the Backend application
     python wsgi.py
 ```
 
-Normally start the Backend application
+Normally start the Frontend application
 
 ```bash
-    cd fronend
+    cd frontend
     npm install
     npm run start
 ```
