@@ -27,15 +27,18 @@ E-StockMarket Application is a Restful Microservice application, where it allows
 
 - [x]  Create the Backend Endpoints
 - [x]  Test the Backend Endpoints using Postman & Swagger UI
-- [ ]  Create the FrontEnd using React
-- [x]  Dockerize the application
-- [x]  Run the Dockerize application and the Test it
+- [x]  Create the FrontEnd using React
+- [x]  Dockerize the Backend application
+- [ ]  Dockerize the Frontend application
+- [x]  Run the Dockerize Backend application and the Test it
 - [x]  Create the AWS DynamoDB using Cloudformation
-- [x]  Deploy and Run the application on AWS EC2 
+- [x]  Deploy backend and Run the application on AWS EC2
+- [ ]  Deploy frontend and Run the application on AWS EC2 
 - [ ]  Try to optimize few of the operations like scan()
 - [ ]  Store and Process the Logs via the ELK.
 - [x]  Run Application using Nginx
 - [ ]  Write the Tests Cases using Pytest
+- [ ]  Remove Some console warnings of React Frontend Applications.
 
 ### API Reference
 `Access the Swagger UI to test all Endpoints: http://localhost:5000/apidocs/index.html`
@@ -131,17 +134,31 @@ Go to the project directory and Setup few things
 - Go to CloudFormation
 - Create the Stack - using template : infrastructure/stack.yaml
 ```
-Normally start the application
+Normally start the Backend application
 
 ```bash
     cd backend
     python wsgi.py
 ```
 
+Normally start the Backend application
+
+```bash
+    cd fronend
+    npm install
+    npm run start
+```
+
 Browse the Swagger UI and explore any Endpoints
 
 ```bash
   http://localhost:5000/apidocs/index.html
+```
+
+Browse the Frontend UI
+
+```bash
+  http://localhost:3000/
 ```
 
 
