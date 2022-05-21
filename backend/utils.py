@@ -94,7 +94,7 @@ def get_one_company_data(companycode):
             output = response['Items'][0]
             s_data = get_company_latest_stock_price(companycode)
             output['S_PRICE'] = s_data
-            return output
+            return {"details": output}
         else:
             return {"message": "Company Does not Exists"}
     except Exception as e:

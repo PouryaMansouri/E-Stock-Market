@@ -2,12 +2,12 @@ import {useState} from 'react';
 
 export function CompanyPricesByDate(props){
     const [ccode, setCCode] = useState("");
-    const [sdate, setStartDate] = useState("");
-    const [edate, setEndDate] = useState("");
+    const [sdate, setStartDate] = useState(0);
+    const [edate, setEndDate] = useState(0);
     const [prices, setPrices] = useState([]);
-    const [minprice, setminPrice] = useState("");
-    const [maxprice, setmaxPrice] = useState("");
-    const [avgprice, setavgPrice] = useState("");
+    const [minprice, setminPrice] = useState();
+    const [maxprice, setmaxPrice] = useState();
+    const [avgprice, setavgPrice] = useState();
 
     const handleCompanyCode = (event)=>{
         setCCode(event.target.value)
@@ -22,8 +22,10 @@ export function CompanyPricesByDate(props){
     }
 
     const getCompanyStockPricesByDate = async () =>{
-        let converted_sdate = sdate.replaceAll('-','');
-        let converted_edate = edate.replaceAll('-','');
+        if (sdate !== 0 && edate !==0 && ccode !== "" )
+        {
+            let converted_sdate = sdate.replaceAll('-','');
+            let converted_edate = edate.replaceAll('-','');
         let url = `http://localhost:5000/api/v1.0/market/stock/get/${ccode}/${converted_sdate}/${converted_edate}`;
         const response = await fetch(url)
         let data = await response.json()
@@ -32,10 +34,15 @@ export function CompanyPricesByDate(props){
         setmaxPrice(data.max_price)
         setavgPrice(data.average_price)
         }
+        else
+        {
+            {props.showAlert("All fields are mandatory", "info")}
+        }
+    }
 
     return(
         <div className="container" style={{color: props.mode==='dark'?'white':'#042743'}}>
-            <h3 className="my-3 text-center">Get Company Stock Prices By Date</h3>
+            <h3 className="my-3">Get Company Stock Prices By Date</h3>
             <div className="row g-3 my-3">
               <div className="col-md-3">
                 <label htmlFor="inputCompanyCode" className="form-label">Company Code</label>
