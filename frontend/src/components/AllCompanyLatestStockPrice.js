@@ -7,7 +7,8 @@ export function AllCompanyLatestStockPrice(props){
     const [output, setOutput] = useState(false);
 
     const fetchData = () => {
-        axios("http://localhost:5000/api/v1.0/market/company/getall")
+        let api_url = props.url+"/api/v1.0/market/company/getall"
+        axios(api_url)
         .then(response => {
             if (response.data.message)
             {

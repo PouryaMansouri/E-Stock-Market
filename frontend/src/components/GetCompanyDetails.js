@@ -18,7 +18,8 @@ export function GetCompanyDetails(props){
     const getCompanyDetails = () => {
         if (ccode !== "")
         {
-            axios(`http://localhost:5000/api/v1.0/market/company/info/${ccode}`)
+            let api_url = props.url+"/api/v1.0/market/company/info/"+ccode;
+            axios(api_url)
             .then(response => {
            if (response.data.message)
             {

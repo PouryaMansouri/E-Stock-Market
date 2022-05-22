@@ -26,13 +26,20 @@ export function CompanyPricesByDate(props){
         {
             let converted_sdate = sdate.replaceAll('-','');
             let converted_edate = edate.replaceAll('-','');
-        let url = `http://localhost:5000/api/v1.0/market/stock/get/${ccode}/${converted_sdate}/${converted_edate}`;
-        const response = await fetch(url)
-        let data = await response.json()
-        setPrices(data.prices)
-        setminPrice(data.min_price)
-        setmaxPrice(data.max_price)
-        setavgPrice(data.average_price)
+            let url = props.url+"/api/v1.0/market/stock/get/"+ccode+"/"+converted_sdate+"/"+converted_edate;
+            const response = await fetch(url)
+            let data = await response.json()
+            if (data.prices)
+            {
+                setPrices(data.prices)
+                setminPrice(data.min_price)
+                setmaxPrice(data.max_price)
+                setavgPrice(data.average_price)
+            }
+            else
+            {
+                {props.showAlert(data.message, "info")};
+            }
         }
         else
         {

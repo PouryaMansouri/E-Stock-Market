@@ -17,9 +17,10 @@ export function AddStockPrice(props){
         let data = {
             "S_PRICE": parseInt(sprice)
         }
-        if (ccode !== "" && sprice !== 0)
+        if (ccode !== "")
         {
-            axios.post(`http://localhost:5000/api/v1.0/market/stock/add/${ccode}`, data)
+            let api_url = props.url+"/api/v1.0/market/stock/add/"+ccode
+            axios.post(api_url, data)
             .then(response => {
                 {props.showAlert(response.data.message, "info")};
              })
