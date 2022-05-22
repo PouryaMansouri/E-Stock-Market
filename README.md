@@ -177,10 +177,10 @@ Follow the below steps - to deploy/run this project on AWS EC2
   7) Run 'cd E-Stock-Market'
   8) Run 'nano docker-compose.yml'
      and update the 'SERVER_NAME=0.0.0.0'  with 'SERVER_NAME=<EC2-Public-IP>'
-  9) Run 'cd frontend/src'
-  10) Run 'nano App.js' and update line number 16 with EC2 Public IP address - instead of 'localhost'
-  11) Run 'sudo docker-compose up'
-  12) Access the Swagger UI from browser as 'http://<EC2-Public-Ip>/apidocs'
+  9) Run 'nano frontend/src/App.js' and update line number 16 with EC2 Public IP address - instead of 'localhost'
+  10) Run 'sudo docker-compose up'
+  11) Access the Frontend React App UI from browser as 'http://<EC2-Public-Ip>/'
+  12) Access the Backend Swagger UI from browser as 'http://<EC2-Public-Ip>/apidocs'
 ```
 
 

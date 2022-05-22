@@ -45,6 +45,14 @@ Resources:
           ToPort: 80
           FromPort: 80
           IpProtocol: tcp
+        - CidrIp: 0.0.0.0/0
+          ToPort: 3000
+          FromPort: 3000
+          IpProtocol: tcp
+        - CidrIp: 0.0.0.0/0
+          ToPort: 5000
+          FromPort: 5000
+          IpProtocol: tcp
   EC2IAMRole:
     Type: AWS::IAM::Role
     Properties:
