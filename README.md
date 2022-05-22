@@ -137,8 +137,7 @@ Go to the project directory and Setup few things
 Normally start the Backend application
 
 ```bash
-    cd backend
-    python wsgi.py
+    python backend/wsgi.py
 ```
 
 Normally start the Frontend application
@@ -187,7 +186,7 @@ Follow the below steps - to deploy/run this project on AWS EC2
 
 ## Additional Notes
 
-I am using "gunicorn" wsgi server, which not runs on windows. 
+I am using "gunicorn" wsgi server, which not runs on windows directly. 
 So to run on windows, you need to update the Dockerfile with and remove 'gunicorn' from requirements.txt
 ```
 CMD ["python", "wsgi.py"]
