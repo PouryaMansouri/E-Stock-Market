@@ -29,11 +29,11 @@ E-StockMarket Application is a Restful Microservice application, where it allows
 - [x]  Test the Backend Endpoints using Postman & Swagger UI
 - [x]  Create the FrontEnd using React
 - [x]  Dockerize the Backend application
-- [ ]  Dockerize the Frontend application
+- [x]  Dockerize the Frontend application
 - [x]  Run the Dockerize Backend application and the Test it
 - [x]  Create the AWS DynamoDB using Cloudformation
 - [x]  Deploy backend and Run the application on AWS EC2
-- [ ]  Deploy frontend and Run the application on AWS EC2 
+- [x]  Deploy frontend and Run the application on AWS EC2 
 - [ ]  Try to optimize few of the operations like scan()
 - [ ]  Store and Process the Logs via the ELK.
 - [x]  Run Application using Nginx
